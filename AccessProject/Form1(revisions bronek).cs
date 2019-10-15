@@ -63,50 +63,31 @@ namespace WindowsFormsApp2
 
             String[] tableNameArray = new string[3] { textBox_tblName1.Text, textBox_tblName2.Text, textBox_tblName3.Text };
 
+            String[] tableContentArray = new string[9]
+            {
+                textBox_tbl1Cont1.Text, textBox_tbl1Cont2.Text, textBox_tbl1Cont3.Text,
+                textBox_tbl2Cont1.Text, textBox_tbl2Cont2.Text, textBox_tbl2Cont3.Text,
+                textBox_tbl1Cont3.Text, textBox_tbl1Cont3.Text, textBox_tbl3Cont3.Text
+            };
 
-            String[,] tableContentArray = new string[3,4]
+            String[] dataTypeArray = new string[3]
             {
-
-            {
-            textBox_tblName1.Text,
-            textBox_tbl1Cont1.Text,
-            textBox_tbl1Cont2.Text,
-            textBox_tbl1Cont3.Text,
-            },
-            
-            {
-            textBox_tblName2.Text,
-            textBox_tbl2Cont1.Text,
-            textBox_tbl2Cont2.Text,
-            textBox_tbl2Cont3.Text,
-            },
-
-            {
-            textBox_tblName3.Text,
-            textBox_tbl1Cont3.Text,
-            textBox_tbl1Cont3.Text,
-            textBox_tbl3Cont3.Text,
-            }
+                comboBox_dataType1.Text, comboBox_dataType2.Text, comboBox_dataType3.Text
 
             };
 
-
-
-            for (int i = 0; i < tableNameArray.Length; i++)
+            //CREATE MULTIDIMENSIONAL ARRAY 3 ROWS 3 COLUMNS
+            /*for (int i = 0; i < tableNameArray.Length; i++)
             {
 
                 Writer.createTable(tableNameArray[i]);
-
-
-                /*for (int n = 0; n < tableNameArray.GetUpperBound(0); n++)
+                int n , j;
+                for (n = 0, j = 0; n < tableContentArray.Length; j < tableNameArray.Length; n++)
                 {
-                    Writer.createRow(tableContentArray[0,i]);
-                    Writer.createRow(tableContentArray[1, i]);
-                    Writer.createRow(tableContentArray[2, i]);
-                }*/
-
-                Writer.createRow(tableContentArray);
+                    Writer.createRow(tableContentArray[n], tableNameArray, dataTypeArray );
+                }
             }
+            */
 
         }
 
@@ -116,6 +97,11 @@ namespace WindowsFormsApp2
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox_dataType1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
