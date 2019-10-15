@@ -35,31 +35,40 @@ namespace WindowsFormsApp2
 
                 using (StreamWriter sw = File.AppendText(path)) { sw.WriteLine("CREATE DATABASE " + databaseName + ";" + "\n" + "USE " + databaseName + ";" + "\n"); }
             }
-
-            public static void createTable(string tableName)
+            
+            public static void createTable(String[,] tableName)
             {
 
 
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 path += "\\test.txt";
 
-                using (StreamWriter sw = File.AppendText(path)) { sw.WriteLine("CREATE TABLE " + tableName + "\n"); }
+                for (int i = 0; i < 3;)
+                {
+                    using (StreamWriter sw = File.AppendText(path)) { sw.WriteLine("CREATE TABLE " + tableName[i,0] + "\n"); }
+                    i++;
+                }
             }
-
+            
             public static void createRow(String[,] rowName)
             {
 
 
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 path += "\\test.txt";
-                for (int i = 0; i < rowName.GetUpperBound(0); i++)
+                for (int i = 0, n = 0; i < 3;)//rowName.GetUpperBound(0); i++)
                 {
+
+
+
+                    
                     using (StreamWriter sw = File.AppendText(path))
                     {
-                        sw.WriteLine("CREATE TABLE " + rowName[0, 0] + "\n");
-                        sw.WriteLine("ALTER TABLE " + rowName[0, 0] + "\nADD " + rowName[0, i + 1]);
-                        sw.WriteLine("ALTER TABLE " + rowName[0, 0] + "\nADD " + rowName[1, i + 1]);
-                        sw.WriteLine("ALTER TABLE " + rowName[0, 0] + "\nADD " + rowName[2, i + 1]);
+                       
+                                                                                                  //tablename    //tableBox1      //datatype1        //tableBox2        //datatype1        //tableBox3     //datatype1`   
+                        sw.WriteLine(String.Format("ALTER TABLE {0} \nADD {1}{2},{3}{4},{5}{6};\n", rowName[i, n], rowName[i, n+1], rowName[i, n + 4], rowName[i, n+2], rowName[i, n + 4], rowName[i,n+3], rowName[i, n+4]));
+                        i++;                                                                     //|_____________| |_________________________________| |____________________________________| |________________________________|    
+                        
                     }
                 }
             }
