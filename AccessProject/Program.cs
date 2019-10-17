@@ -38,7 +38,7 @@ namespace WindowsFormsApp2
                 using (StreamWriter sw = File.AppendText(path)) { sw.WriteLine("CREATE DATABASE " + databaseName + ";" + "\n" + "USE " + databaseName + ";" + "\n"); }
             }
             
-            public static void createTable(String[,] tableName)
+            public static void createTable(List<string> tableName)
             {
 
 
@@ -47,14 +47,14 @@ namespace WindowsFormsApp2
 
                 for (int i = 0; i < 3;)
                 {
-                    using (StreamWriter sw = File.AppendText(path)) { sw.WriteLine("CREATE TABLE " + tableName[i,0] + "\n"); }
+                    using (StreamWriter sw = File.AppendText(path)) { sw.WriteLine("CREATE TABLE " + tableName[i] + "\n"); }
                     i++;
                 }
             }
 
            
 
-            public static void createRow(String[,] rowName)
+            public static void createRow(List<string> tableName, List<string> rowName, List<string> dataType)
             {
 
 
@@ -68,9 +68,9 @@ namespace WindowsFormsApp2
                     
                     using (StreamWriter sw = File.AppendText(path))
                     {
-                       
-                                                                                                  //tablename    //tableBox1      //datatype1        //tableBox2        //datatype1        //tableBox3     //datatype1`   
-                        sw.WriteLine(String.Format("ALTER TABLE {0} \nADD {1}{2},{3}{4},{5}{6};\n", rowName[i, n], rowName[i, n+1], rowName[i, n + 4], rowName[i, n+2], rowName[i, n + 4], rowName[i,n+3], rowName[i, n+4]));
+                        if (i == 1){ n = 3; }
+                        if (i == 2){ n = 6; }                                                                          //tablename    //tableBox1      //datatype1        //tableBox2        //datatype1        //tableBox3     //datatype1`   
+                        sw.WriteLine(String.Format("ALTER TABLE {0} \nADD {1}{2},{3}{4},{5}{6};\n", tableName[i], rowName[n], dataType[i], rowName[n+1], dataType[i], rowName[n+2], dataType[i]));
                         i++;                                                                     //|_____________| |_________________________________| |____________________________________| |________________________________|    
                         
                     }
