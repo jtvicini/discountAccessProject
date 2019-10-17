@@ -16,12 +16,14 @@ namespace WindowsFormsApp2
         static void Main()
         {
 
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
 
         }
-
+        
+       
         public class Writer
         {
 
@@ -49,7 +51,9 @@ namespace WindowsFormsApp2
                     i++;
                 }
             }
-            
+
+           
+
             public static void createRow(String[,] rowName)
             {
 

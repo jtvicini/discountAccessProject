@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static WindowsFormsApp2.Program;
 
+
 namespace WindowsFormsApp2
 {
 
@@ -60,11 +61,22 @@ namespace WindowsFormsApp2
         {
             Writer.createDatabase(textBox_dbName.Text);
 
+            List<string> databaseContents = new List<string> { };
+
+            //while (tableContentsEmpty = false){}  
+            //It might be better to turn each table into a class instead of using an array
+            //Class Table 
+            //Could create a button to add additional tables, every time that button is clicked the table total goes up,
+            //getTableAmount method should return a total amount of entries into a table, 
+            //getTableName will use textBox_tableName(x).Text
+            //getTableContents will use textBox_table(x)Cont(x).Text
+            //
+            //
 
             String[] tableNameArray = new string[3] { textBox_tblName1.Text, textBox_tblName2.Text, textBox_tblName3.Text };
 
-
-            String[,] tableContentArray = new string[3,5]
+      
+            String[,] tableContentArray = new string[,]
             {
             //AN SQL COMMAND WILL LOOK LIKE THIS; 
             //ALTER TABLE table_name
@@ -102,14 +114,44 @@ namespace WindowsFormsApp2
             }
 
             };
-
-
+            List<string> databaseList = tableContentArray.Cast<string>().ToList();
+            
             Writer.createTable(tableContentArray);
             Writer.createRow(tableContentArray);
-          
+            
 
         }
 
+
+        class Table
+        {
+            public string tableName { get { return tableName; } set { tableName = value;} }
+            public int tableEntries { get { return tableEntries; } set { tableEntries = value; } }
+            public string tableContents { get { return tableContents; } set { tableContents = value;} }
+            public string tableContentsTypes { get { return tableContentsTypes; } set { tableContentsTypes = value; } }
+
+
+            public Table ()
+            {
+
+                
+                /*void getTableName(string _tableName)
+                {
+                    tableName = _tableName;
+                };
+
+                void getTableEntries(int _tableEntries)
+                {
+                    tableEntries = _tableEntries;
+                };
+
+                void getTableContents(string _tableContents)
+                {
+                    tableContents = _tableContents;
+                };*/
+            }
+
+        }
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
 
